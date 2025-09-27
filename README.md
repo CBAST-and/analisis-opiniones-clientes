@@ -5,7 +5,8 @@ Pipeline ETL para el procesamiento y análisis de opiniones de clientes provenie
 
 ## 🏗️ Estructura del Proyecto
 
-```analisis_opiniones/
+```
+analisis_opiniones/
 ├── data/
 │ ├── clients.csv
 │ ├── products.csv
