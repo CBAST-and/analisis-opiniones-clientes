@@ -1,0 +1,20 @@
+# Archivos de entorno virtual
+.venv/
+venv/
+env/
+
+# Archivos de configuración sensible
+.env
+*.env.local
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de PyCharm
+.idea/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
