@@ -37,8 +37,94 @@ main.py
 ```
 
 ## Modelo de Datos
-10 tablas normalizadas
-Relaciones PK/FK definidas
+- Clientes (IdCliente) ← ComentariosSociales → Productos (IdProducto)
+- Clientes (IdCliente) ← Encuestas → Productos (IdProducto)
+- Clientes (IdCliente) ← ResenasWeb → Productos (IdProducto)
+- Productos (IdProducto) → Categorias (IdCategoria)
+- Fuentes (IdFuente) → TiposFuente (IdTipoFuente)
+
+### Diagrama Entidad-Relacion
+
+```mermaid
+erDiagram
+    Clientes {
+        int IdCliente PK
+        varchar Nombre
+        varchar Email
+    }
+    
+    Categorias {
+        int IdCategoria PK
+        varchar Categoria
+    }
+    
+    Productos {
+        int IdProducto PK
+        varchar Nombre
+        int IdCategoria FK
+    }
+    
+    TiposFuente {
+        int IdTipoFuente PK
+        varchar TipoFuente
+    }
+    
+    Fuentes {
+        varchar IdFuente PK
+        int IdTipoFuente FK
+        date FechaCarga
+    }
+    
+    FuentesSociales {
+        int IdFuenteSocial PK
+        varchar NombreFuente
+    }
+    
+    Clasificaciones {
+        int IdClasificacion PK
+        varchar Clasificacion
+    }
+    
+    ComentariosSociales {
+        varchar IdComment PK
+        int IdCliente FK
+        int IdProducto FK
+        int IdFuenteSocial FK
+        date Fecha
+        text Comentario
+    }
+    
+    Encuestas {
+        int IdOpinion PK
+        int IdCliente FK
+        int IdProducto FK
+        date Fecha
+        text Comentario
+        int IdClasificacion FK
+        int PuntajeSatisfaccion
+    }
+    
+    ReseñasWeb {
+        varchar IdReview PK
+        int IdCliente FK
+        int IdProducto FK
+        date Fecha
+        text Comentario
+        int Rating
+    }
+
+    Productos ||--o{ Categorias : pertenece_a
+    Fuentes ||--o{ TiposFuente : tiene_tipo
+    ComentariosSociales }o--|| Clientes : realizado_por
+    ComentariosSociales }o--|| Productos : sobre_producto
+    ComentariosSociales }o--|| FuentesSociales : desde_fuente
+    Encuestas }o--|| Clientes : realizada_por
+    Encuestas }o--|| Productos : evalua_producto
+    Encuestas }o--|| Clasificaciones : tiene_clasificacion
+    ReseñasWeb }o--|| Clientes : escrita_por
+    ReseñasWeb }o--|| Productos : reseña_producto
+  
+```
 
 ## Resultados
 ```
