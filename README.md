@@ -126,13 +126,6 @@ erDiagram
   
 ```
 
-## Resultados
-```
-Registros procesados: 1,700
-Registros cargados: 816
-Tablas pobladas: 7
-```
-
 # Informe Técnico - Pipeline ETL
 
 ## 1. Diseño de Base de Datos
